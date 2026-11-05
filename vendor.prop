@@ -74,7 +74,7 @@ vendor.audio.feature.fm.enable=true
 vendor.audio.feature.hdmi_edid.enable=true
 vendor.audio.feature.hdmi_passthrough.enable=true
 vendor.audio.feature.hfp.enable=true
-vendor.audio.feature.hifi_audio.enable=false
+vendor.audio.feature.hifi_audio.enable=true
 vendor.audio.feature.hwdep_cal.enable=false
 vendor.audio.feature.incall_music.enable=true
 vendor.audio.feature.keep_alive.enable=true
@@ -95,7 +95,7 @@ vendor.audio.feature.vbat.enable=true
 vendor.audio.feature.wsa.enable=false
 vendor.audio.hal.output.suspend.supported=false
 vendor.audio.hw.aac.encoder=true
-vendor.audio.offload.buffer.size.kb=32
+vendor.audio.offload.buffer.size.kb=64
 vendor.audio.offload.gapless.enabled=true
 vendor.audio.offload.multiaac.enable=true
 vendor.audio.offload.multiple.enabled=false
@@ -283,3 +283,5 @@ wifi.aware.interface=wifi-aware0
 
 # Zygote
 zygote.critical_window.minute=10
+persist.vendor.audio.hifi.enable=true
+vendor.audio.offload.24bit.enable=true

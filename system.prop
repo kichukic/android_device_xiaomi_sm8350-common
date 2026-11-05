@@ -46,3 +46,20 @@ persist.debug.wfd.enable=1
 
 # Network
 net.ipv4.tcp_congestion_control=bbr
+
+# ART & Dexopt Performance
+pm.dexopt.install=speed-profile
+pm.dexopt.bg-dexopt=speed-profile
+pm.dexopt.boot-after-ota=verify
+pm.dexopt.first-boot=verify
+pm.dexopt.inactive=verify
+dalvik.vm.dex2oat-threads=6
+dalvik.vm.image-dex2oat-threads=6
+dalvik.vm.boot-dex2oat-threads=8
+dalvik.vm.dex2oat-filter=speed-profile
+
+# SurfaceFlinger Frame Pacing & 120Hz Smoothness
+ro.surface_flinger.set_idle_timer_ms=4000
+ro.surface_flinger.set_touch_timer_ms=200
+debug.sf.frame_rate_multiple_threshold=120
+debug.sf.latch_unsignaled=1

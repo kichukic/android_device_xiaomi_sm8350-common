@@ -78,26 +78,29 @@ function configure_zram_parameters() {
 }
 
 function configure_read_ahead_kb_values() {
-	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
-	MemTotal=${MemTotalStr:16:8}
+	# Optimal 128KB read-ahead for flash storage (UFS 3.1 / eMMC)
+	ra_kb=128
 
-	dmpts=$(ls /sys/block/*/queue/read_ahead_kb | grep -e dm -e mmc)
+	for blk in /sys/block/*/queue/read_ahead_kb; do
+		echo $ra_kb > "$blk" 2>/dev/null
+	done
 
-	# Set 128 for <= 3GB &
-	# set 512 for >= 4GB targets.
-	if [ $MemTotal -le 3145728 ]; then
-		ra_kb=128
-	else
-		ra_kb=512
-	fi
-	if [ -f /sys/block/mmcblk0/bdi/read_ahead_kb ]; then
-		echo $ra_kb > /sys/block/mmcblk0/bdi/read_ahead_kb
-	fi
-	if [ -f /sys/block/mmcblk0rpmb/bdi/read_ahead_kb ]; then
-		echo $ra_kb > /sys/block/mmcblk0rpmb/bdi/read_ahead_kb
-	fi
-	for dm in $dmpts; do
-		echo $ra_kb > $dm
+	for bdi in /sys/block/*/bdi/read_ahead_kb; do
+		echo $ra_kb > "$bdi" 2>/dev/null
+	done
+
+	# Configure UFS 3.1 storage queues and I/O scheduler
+	for ufs_dev in /sys/block/sd*; do
+		if [ -d "$ufs_dev/queue" ]; then
+			if grep -q "kyber" "$ufs_dev/queue/scheduler" 2>/dev/null; then
+				echo kyber > "$ufs_dev/queue/scheduler"
+			elif grep -q "bfq" "$ufs_dev/queue/scheduler" 2>/dev/null; then
+				echo bfq > "$ufs_dev/queue/scheduler"
+			fi
+			echo 0 > "$ufs_dev/queue/add_random" 2>/dev/null
+			echo 0 > "$ufs_dev/queue/iostats" 2>/dev/null
+			echo 64 > "$ufs_dev/queue/nr_requests" 2>/dev/null
+		fi
 	done
 }
 
