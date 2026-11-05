@@ -25,3 +25,13 @@
   - Enabled 24-bit / 192kHz Hi-Fi audio output (`vendor.audio.feature.hifi_audio.enable=true`, `vendor.audio.offload.24bit.enable=true`).
   - Doubled audio offload buffer size to 64KB to cut CPU wakeups and save battery during music playback.
   - Enabled 3-level granular vibration intensity slider (Low, Medium, High) in Settings.
+
+### Bluetooth Audio & Framework Animation Physics
+- **Bluetooth Audio Bitrate Uncap:**
+  - Removed AAC bitrate whitelist caps (`persist.vendor.bt.a2dp.aac_whitelist=false`).
+  - Enabled AAC VBR frame control.
+  - Set default LDAC streaming profile to 990 kbps high-quality audio (`persist.bluetooth.ldac.rate=990`).
+  - Decoupled Bluetooth absolute volume (`persist.bluetooth.disableabsvol=true`) to eliminate digital clipping on external DACs.
+  - Disabled Bluetooth snoop debugging log to save CPU cycles.
+- **Framework Animation Durations:**
+  - Calibrated animation timings for 120Hz refresh rates: `shortAnimTime` (150ms), `mediumAnimTime` (250ms), `longAnimTime` (350ms), `activityShortDur` (120ms), `activityDefaultDur` (180ms).

@@ -173,4 +173,10 @@
 
     <!-- Default: 60 MB. Bytes that the PinnerService will pin for Home app -->
     <integer name="config_pinnerHomePinBytes">26214400</integer>
+    <!-- Animation duration and physics tuning for 120Hz display -->
+    <integer name="config_shortAnimTime">150</integer>
+    <integer name="config_mediumAnimTime">250</integer>
+    <integer name="config_longAnimTime">350</integer>
+    <integer name="config_activityShortDur">120</integer>
+    <integer name="config_activityDefaultDur">180</integer>
 </resources>

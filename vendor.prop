@@ -285,3 +285,12 @@ wifi.aware.interface=wifi-aware0
 zygote.critical_window.minute=10
 persist.vendor.audio.hifi.enable=true
 vendor.audio.offload.24bit.enable=true
+
+# Bluetooth Audio Bitrate & Codec Boost
+persist.vendor.bt.a2dp.aac_whitelist=false
+persist.vendor.bt.aac_vbr_ctl.enabled=true
+persist.vendor.qcom.bluetooth.ldac.mode=quality
+persist.bluetooth.ldac.rate=990
+persist.bluetooth.disableabsvol=true
+persist.vendor.service.bdroid.snooplog=false
+persist.vendor.btstack.enable.lpa=true
