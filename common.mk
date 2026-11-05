@@ -503,6 +503,3 @@ PRODUCT_PACKAGES += \
 $(call inherit-product-if-exists, hardware/dolby/dolby.mk)
 PRODUCT_SOONG_NAMESPACES += hardware/dolby
 
-# Motorola Dolby Atmos
-$(call inherit-product-if-exists, hardware/dolby/dolby.mk)
-PRODUCT_SOONG_NAMESPACES += hardware/dolby
