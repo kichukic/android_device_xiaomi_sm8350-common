@@ -147,6 +147,7 @@ ro.bluetooth.a2dp_offload.supported=true
 # Camera
 camera.disable_zsl_mode=true
 ro.hardware.camera=xiaomi
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.google.android.GoogleCamera,com.google.android.GoogleCamera.Urnyx,com.google.android.GoogleCamera.Shamim,com.google.android.GoogleCamera.dev,com.google.android.GoogleCameraENG,com.google.android.GoogleCameraGood,net.sourceforge.opencamera
 
 # Chipset
 ro.soc.manufacturer=QTI
