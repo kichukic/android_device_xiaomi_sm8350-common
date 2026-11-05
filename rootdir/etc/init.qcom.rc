@@ -40,6 +40,9 @@ on early-init
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 0
 
 on early-boot
+    # Prevent sudden reboots on recoverable driver errors
+    write /proc/sys/kernel/panic_on_oops 0
+    write /proc/sys/kernel/panic 0
     write /sys/class/drm/card0-DSI-1/status "detect"
     write /sys/module/drm/parameters/vblankoffdelay -1
 
