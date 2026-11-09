@@ -73,7 +73,28 @@ service kernel-post-boot /vendor/bin/sh /vendor/bin/init.kernel.post_boot.sh
     oneshot
 
 on property:sys.boot_completed=1
+    # Virtual Memory & ZRAM Tuning
     write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 60
+    write /proc/sys/vm/compaction_proactiveness 0
+    write /proc/sys/vm/vfs_cache_pressure 100
+
+    # CPU Schedutil Governor Rate Limits (Prevents Cortex-X1 power spikes & brownout reboots)
+    # CPU 0-3 (Silver / Little)
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 1000
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 2000
+
+    # CPU 4-6 (Gold)
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/up_rate_limit_us 2000
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/down_rate_limit_us 1000
+
+    # CPU 7 (Prime Cortex-X1)
+    write /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us 4000
+    write /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us 500
+
+    # Watchdog & Panic Suppression
+    write /proc/sys/kernel/panic_on_oops 0
+    write /proc/sys/kernel/panic 0
 
     start kernel-post-boot
 

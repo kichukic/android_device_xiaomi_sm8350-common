@@ -503,3 +503,8 @@ PRODUCT_PACKAGES += \
 $(call inherit-product-if-exists, hardware/dolby/dolby.mk)
 PRODUCT_SOONG_NAMESPACES += hardware/dolby
 
+
+# Background App Freezer (cgroup v2)
+PRODUCT_PRODUCT_PROPERTIES +=     persist.sys.fflag.override.settings_app_freezer=true
+
+PRODUCT_SYSTEM_PROPERTIES +=     cached_apps_freezer=true

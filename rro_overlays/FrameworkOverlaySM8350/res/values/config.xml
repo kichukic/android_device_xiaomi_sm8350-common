@@ -179,4 +179,14 @@
     <integer name="config_longAnimTime">350</integer>
     <integer name="config_activityShortDur">120</integer>
     <integer name="config_activityDefaultDur">180</integer>
+    <!-- Enable native in-kernel process freezing (CachedAppOptimizer) -->
+    <bool name="config_supportsInKernelProcessFreezing">true</bool>
+
+    <!-- Disable window blurs system-wide to save GPU fill-rate -->
+    <bool name="config_windowBlursDisabled">true</bool>
+
+    <!-- Aggressive Quick Doze Parameters -->
+    <integer name="config_lightDozeAfterScreenOffDelayMs">60000</integer>
+    <integer name="config_lightDozeIdleTimeoutMs">300000</integer>
+    <integer name="config_deepDozeDelayMs">600000</integer>
 </resources>
